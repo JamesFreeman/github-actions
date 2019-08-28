@@ -4,8 +4,7 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
     container:
-      image: lorisleiva/laravel-docker:7.3 # Change this to 7.1/7.2/7.3 to specify the PHP Version
-
+      image: jackmdavis97/php:7.3
 
     steps:
     - uses: actions/checkout@v1
