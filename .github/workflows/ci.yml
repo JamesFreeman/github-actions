@@ -1,0 +1,24 @@
+on: push
+name: Run phpunit testsuite
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: jackmdavis97/php:7.3
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install composer dependencies
+      uses: MilesChou/composer-action@master
+      with:
+        args: install --no-ansi --no-interaction --prefer-dist
+
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.example .env
+        php artisan key:generate
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
