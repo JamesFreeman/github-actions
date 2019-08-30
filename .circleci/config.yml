@@ -48,9 +48,5 @@ jobs:
           paths:
             - node_modules
 
-      # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
-
       # run tests with phpunit
       - run: ./vendor/bin/phpunit
